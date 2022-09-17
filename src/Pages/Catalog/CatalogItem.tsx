@@ -38,8 +38,14 @@ export function CatalogItem({ item: { name, description, price, stock } }:props)
                     <Paragraph>Total: {formatCurrency(numberOfItems * price)}</Paragraph>
                 </Card.Content>
                 <Card.Actions>
-                    <Button mode='outlined' labelStyle={{ fontSize: 25 }} onPress={handleIncrease}>+</Button>
-                    <Button mode='outlined' labelStyle={{ fontSize: 25 }} onPress={handleDecrease}>-</Button>
+                    <Button
+                        mode='outlined'
+                        labelStyle={{ fontSize: 25 }}
+                        onPress={handleIncrease}>+</Button>
+                    <Button
+                        mode='outlined'
+                        labelStyle={{ fontSize: 25 }}
+                        onPress={handleDecrease}>-</Button>
                 </Card.Actions>
             </Card>
         </View>

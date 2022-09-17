@@ -1,0 +1,1 @@
+export { ItemRegister } from './ItemRegister';
