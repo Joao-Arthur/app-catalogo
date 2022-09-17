@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "Aulas",
-    "slug": "Aulas",
+    "name": "app-catalogo",
+    "slug": "app-catalogo",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
