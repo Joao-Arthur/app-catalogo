@@ -1,7 +1,10 @@
 import { MainLayout } from './src/MainLayout';
+import { NavigationContainer } from '@react-navigation/native';
 
 export default function App() {
     return ( 
-        <MainLayout/> 
+        <NavigationContainer>
+            <MainLayout/> 
+        </NavigationContainer>        
     );
 }

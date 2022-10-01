@@ -1,14 +1,23 @@
 import { Controller, useForm } from 'react-hook-form';
 import { StyleSheet, View } from 'react-native';
 import { Button, Text, TextInput } from 'react-native-paper';
+import {  NativeStackScreenProps } from '@react-navigation/native-stack';
 import { signIn } from '../../features/signIn';
+import { useNavigation } from '@react-navigation/native';
 
 type paramsType = {
     email: string;
     password: string;
-}
+};
+
+type RootStackParamList = {
+    SignIn: undefined;
+    Catalog:undefined;
+};
 
 export function SignIn() {
+    const navigation = useNavigation<NativeStackScreenProps<RootStackParamList>['navigation']>();
+
     const { control, handleSubmit, formState: { errors } } = useForm({
         defaultValues: {
             email: '',
@@ -18,6 +27,7 @@ export function SignIn() {
 
     function onSubmit  (data: paramsType)  {
         signIn(data).then(()=> {
+            navigation.navigate('Catalog');
             console.log('login concluido');
         }).catch(() => {
             console.log('erro');
