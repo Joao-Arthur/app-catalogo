@@ -1,27 +1,73 @@
+import { Controller, useForm } from 'react-hook-form';
 import { StyleSheet, View } from 'react-native';
 import { Button, Text, TextInput } from 'react-native-paper';
+import { signIn } from '../../features/signIn';
+
+type paramsType = {
+    email: string;
+    password: string;
+}
 
 export function SignIn() {
+    const { control, handleSubmit, formState: { errors } } = useForm({
+        defaultValues: {
+            email: '',
+            password: '',
+        },
+    });
+
+    function onSubmit  (data: paramsType)  {
+        console.log(data);
+    }
+
     return (
         <View style={styles.container}>
             <Text variant='displayLarge'>Entrar</Text>
             <View style={styles.inputContainer}>
-                <TextInput
-                    label='e-mail'
-                    placeholder='email@email.com'
-                    style={styles.inputStyle}
+                <Controller
+                    control={control}
+                    rules={{
+                        required: true,
+                        maxLength: 100,
+                    }}
+                    render={({ field: { onChange, onBlur, value } }) => (
+                        <TextInput
+                            label='e-mail'
+                            placeholder='email@email.com'
+                            style={styles.inputStyle}
+                            onBlur={onBlur}
+                            onChangeText={onChange}
+                            value={value}
+                        />
+                    )}
+                    name='email'
                 />
-                <TextInput
-                    label='senha'
-                    placeholder='**********'
-                    style={styles.inputStyle}
+                <Controller
+                    control={control}
+                    rules={{ 
+                        required: true,
+                        maxLength: 100,
+                    }}
+                    render={({ field: { onChange, onBlur, value } }) => (
+                        <TextInput
+                            label='senha'
+                            placeholder='**********'
+                            style={styles.inputStyle}
+                            onBlur={onBlur}
+                            onChangeText={onChange}
+                            value={value}
+                        />
+                    )}
+                    name='password'
                 />
             </View>
             <Button
+                disabled={!!errors.email || !!errors.password}
                 mode='contained'
                 labelStyle={{fontSize: 20}}
                 contentStyle={{ height: 70 }}
                 style={{width: '80%' }}
+                onPress={handleSubmit(onSubmit)}
             >
                 Entrar
             </Button>
