@@ -1,7 +1,7 @@
 import { Controller, useForm } from 'react-hook-form';
 import { StyleSheet, View } from 'react-native';
 import { Button, Text, TextInput } from 'react-native-paper';
-import {  NativeStackScreenProps } from '@react-navigation/native-stack';
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
 //import { signIn } from '../../features/signIn';
 import { useNavigation } from '@react-navigation/native';
 
@@ -13,7 +13,7 @@ type paramsType = {
 type RootStackParamList = {
     SignUp: undefined;
     SignIn: undefined;
-    Catalog:undefined;
+    Catalog: undefined;
 };
 
 export function SignUp() {
@@ -26,7 +26,7 @@ export function SignUp() {
         },
     });
 
-    function onSubmit  (data: paramsType)  {
+    function onSubmit(data: paramsType) {
         //  signIn(data).then(()=> {
         //      navigation.replace('Catalog');
         //      console.log('cadastro concluido');
@@ -63,7 +63,7 @@ export function SignUp() {
                 />
                 <Controller
                     control={control}
-                    rules={{ 
+                    rules={{
                         required: true,
                         maxLength: 100,
                     }}
@@ -83,9 +83,9 @@ export function SignUp() {
             <Button
                 disabled={!!errors.email || !!errors.password}
                 mode='contained'
-                labelStyle={{fontSize: 20}}
+                labelStyle={{ fontSize: 20 }}
                 contentStyle={{ height: 70 }}
-                style={{width: '80%' }}
+                style={{ width: '80%' }}
                 onPress={handleSubmit(onSubmit)}
             >
                 Cadastrar
@@ -93,9 +93,9 @@ export function SignUp() {
             <Button
                 disabled={!!errors.email || !!errors.password}
                 mode='contained'
-                labelStyle={{fontSize: 20}}
+                labelStyle={{ fontSize: 20 }}
                 contentStyle={{ height: 70 }}
-                style={{width: '80%', marginTop: 20 }}
+                style={{ width: '80%', marginTop: 20 }}
                 onPress={onSignInClick}
             >
                 Já tenho conta

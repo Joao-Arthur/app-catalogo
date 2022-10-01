@@ -13,7 +13,7 @@ type props = {
     };
 }
 
-export function CatalogItem({ item: { name, description, price, stock } }:props) {
+export function CatalogItem({ item: { name, description, price, stock } }: props) {
     const [numberOfItems, setNumberOfItems] = useState(0);
 
     function handleIncrease() {
@@ -31,7 +31,7 @@ export function CatalogItem({ item: { name, description, price, stock } }:props)
     return (
         <View style={styles.container}>
             <Card>
-                <Card.Title title={name} subtitle={description}  />
+                <Card.Title title={name} subtitle={description} />
                 <Card.Cover source={{ uri: 'https://picsum.photos/700' }} />
                 <Card.Content>
                     <Paragraph>Preço: {formatCurrency(price)}</Paragraph>

@@ -3,6 +3,6 @@ type props = {
     children: any;
 }
 
-export function Button({}: props) {
-    
+export function Button({ }: props) {
+
 }

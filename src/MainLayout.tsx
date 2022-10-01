@@ -13,7 +13,7 @@ export function MainLayout() {
         <Navigator initialRouteName="SignIn">
             <Screen options={{ headerShown: false }} name="SignIn" component={SignIn} />
             <Screen options={{ headerShown: false }} name="SignUp" component={SignUp} />
-            <Screen options={{title: 'Catálogo'}} name="Catalog" component={Catalog} />
+            <Screen options={{ title: 'Catálogo' }} name="Catalog" component={Catalog} />
             <Screen name="ItemRegister" component={ItemRegister} />
             <Screen name="Cart" component={Cart} />
         </Navigator>

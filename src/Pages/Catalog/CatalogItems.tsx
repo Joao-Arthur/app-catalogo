@@ -1,4 +1,4 @@
-import {  ScrollView, StyleSheet, View } from 'react-native';
+import { ScrollView, StyleSheet, View } from 'react-native';
 import { CatalogItem } from './CatalogItem';
 
 const items = [

@@ -1,4 +1,4 @@
-import {  Appbar } from 'react-native-paper';
+import { Appbar } from 'react-native-paper';
 
 export function Header() {
     return (

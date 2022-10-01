@@ -3,7 +3,7 @@ type paramsType = {
     readonly password: string;
 }
 
-export async function signIn({ email, password }: paramsType) {
+export async function signUp({ email, password }: paramsType) {
     if (!email)
         throw new Error('informe o email');
     if (!password)
