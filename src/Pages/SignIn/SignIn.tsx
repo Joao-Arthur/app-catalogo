@@ -39,9 +39,9 @@ const styles = StyleSheet.create({
     inputContainer: {
         width: '80%',
         flexDirection: 'column',
-        margin: 40
+        margin: 40,
     },
     inputStyle: {
-        marginVertical: 10
-    }
+        marginVertical: 10,
+    },
 });
