@@ -17,7 +17,11 @@ export function SignIn() {
     });
 
     function onSubmit  (data: paramsType)  {
-        console.log(data);
+        signIn(data).then(()=> {
+            console.log('login concluido');
+        }).catch(() => {
+            console.log('erro');
+        });
     }
 
     return (
