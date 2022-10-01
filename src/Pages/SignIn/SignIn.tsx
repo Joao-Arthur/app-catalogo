@@ -12,6 +12,7 @@ type paramsType = {
 
 type RootStackParamList = {
     SignIn: undefined;
+    SignUp: undefined;
     Catalog:undefined;
 };
 
@@ -25,13 +26,17 @@ export function SignIn() {
         },
     });
 
-    function onSubmit  (data: paramsType)  {
+    function onSubmit(data: paramsType)  {
         signIn(data).then(()=> {
-            navigation.navigate('Catalog');
+            navigation.replace('Catalog');
             console.log('login concluido');
         }).catch(() => {
             console.log('erro');
         });
+    }
+
+    function onSignUpClick() {
+        navigation.replace('SignUp');
     }
 
     return (
@@ -84,6 +89,16 @@ export function SignIn() {
                 onPress={handleSubmit(onSubmit)}
             >
                 Entrar
+            </Button>
+            <Button
+                disabled={!!errors.email || !!errors.password}
+                mode='contained'
+                labelStyle={{fontSize: 20}}
+                contentStyle={{ height: 70 }}
+                style={{width: '80%', marginTop: 20 }}
+                onPress={onSignUpClick}
+            >
+                Ainda não tenho conta
             </Button>
         </View>
     );
