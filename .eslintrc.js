@@ -1,41 +1,80 @@
 module.exports = {
-    'env': {
-        'browser': true,
-        'es2021': true
+    env: {
+        browser: true,
+        es2021: true,
     },
-    'extends': [
+    extends: [
         'eslint:recommended',
         'plugin:react/recommended',
-        'plugin:@typescript-eslint/recommended'
+        'plugin:@typescript-eslint/recommended',
     ],
-    'overrides': [
-    ],
-    'parser': '@typescript-eslint/parser',
-    'parserOptions': {
-        'ecmaVersion': 'latest',
-        'sourceType': 'module'
+    parser: '@typescript-eslint/parser',
+    parserOptions: {
+        ecmaVersion: 'latest',
+        sourceType: 'module',
     },
-    'plugins': [
-        'react',
-        '@typescript-eslint'
-    ],
-    'rules': {
+    plugins: ['react', 'react-hooks', '@typescript-eslint'],
+    rules: {
+        'react-hooks/rules-of-hooks': 'error',
+        'react-hooks/exhaustive-deps': 'error',
+        'react/jsx-filename-extension': ['error', {
+            extensions: ['.tsx'],
+        }],
+        'react/jsx-uses-react': 'off',
         'react/react-in-jsx-scope': 'off',
-        'indent': [
+        'react/jsx-indent': ['error', 4],
+        'react/jsx-indent-props': ['error', 4],
+        'import/prefer-default-export': 'off',
+        '@typescript-eslint/naming-convention': [
             'error',
-            4
+            {
+                selector: 'variable',
+                format: ['camelCase'],
+            },
+            {
+                selector: 'function',
+                format: ['camelCase', 'PascalCase'],
+            },
         ],
-        'linebreak-style': [
+        '@typescript-eslint/indent': ['error', 4],
+        'arrow-parens': ['error', 'as-needed'],
+        'operator-linebreak': [
             'error',
-            'windows'
+            'after',
+            {
+                overrides: {
+                    '?': 'before',
+                    ':': 'before',
+                },
+            },
         ],
-        'quotes': [
-            'error',
-            'single'
-        ],
-        'semi': [
-            'error',
-            'always'
-        ]
-    }
+        'no-implicit-globals': 'error',
+        'default-case': 'off',
+        'no-restricted-syntax': 'off',
+        curly: ['error', 'multi'],
+        'nonblock-statement-body-position': ['error', 'below'],
+        'object-curly-newline': ['error', {
+            'ObjectExpression': {
+                multiline: true,
+                consistent: true,
+            },
+            'ObjectPattern': {
+                multiline: true,
+            },
+            'ImportDeclaration': {
+                multiline: false,
+                consistent: true,
+            },
+            'ExportDeclaration': {
+                multiline: true,
+                minProperties: 0,
+            },
+        }],
+        indent: ['error', 4],
+        'linebreak-style': ['error', 'unix'],
+        quotes: ['error', 'single'],
+        semi: ['error', 'always'],
+        'eol-last': ['error', 'always'],
+        'comma-dangle': ['error', 'always-multiline'],
+    },
 };

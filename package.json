@@ -7,9 +7,11 @@
     "start:android": "expo start --android",
     "start:ios": "expo start --ios",
     "start:web": "expo start --web",
-    "test": "jest"
+    "test": "jest",
+    "lint": "eslint \"./src/**/*.{ts,tsx}\" --fix"
   },
   "dependencies": {
+    "eslint-plugin-react-hooks": "^4.6.0",
     "expo": "~46.0.9",
     "expo-status-bar": "~1.4.0",
     "react": "18.0.0",
