@@ -2,6 +2,9 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import {  DefaultTheme, Provider as PaperProvider } from 'react-native-paper';
 import { SignIn } from './Pages/SignIn';
 import { Catalog } from './Pages/Catalog';
+import { SignUp } from './Pages/SignUp';
+import { ItemRegister } from './Pages/ItemRegister';
+import { Cart } from './Pages/Cart';
 
 
 const theme = {
@@ -24,7 +27,10 @@ export function MainLayout() {
         <PaperProvider theme={theme}>
             <Stack.Navigator initialRouteName="SignIn">
                 <Stack.Screen name="SignIn" component={SignIn} />
+                <Stack.Screen name="SignUp" component={SignUp} />
                 <Stack.Screen name="Catalog" component={Catalog} />
+                <Stack.Screen name="ItemRegister" component={ItemRegister} />
+                <Stack.Screen name="Cart" component={Cart} />                
             </Stack.Navigator>
         </PaperProvider>
     );
