@@ -6,7 +6,7 @@ type paramsType = {
 }
 
 export async function signUp({ email, password }: paramsType) {
-    validator.validate({
+    const emailValidation = validator.validate({
         value: email,
         validations: [
             validator.validations.required,
@@ -14,7 +14,7 @@ export async function signUp({ email, password }: paramsType) {
             validator.validations.emailFormat,
         ],
     });
-    validator.validate({
+    const passwordValidation = validator.validate({
         value: password,
         validations: [
             validator.validations.required,
@@ -23,4 +23,9 @@ export async function signUp({ email, password }: paramsType) {
             validator.validations.containsSpecial,
         ],
     });
+
+    if (emailValidation.errors.length)
+        return;
+    if (passwordValidation.errors.length)
+        return;
 }
