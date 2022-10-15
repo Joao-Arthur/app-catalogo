@@ -1,1 +1,1 @@
-export { containsNumber } from './containsSpecial';
+export { containsSpecial } from './containsSpecial';
