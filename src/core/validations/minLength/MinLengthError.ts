@@ -1,8 +1,5 @@
 export class MinLengthError extends Error {
-    constructor(
-        readonly field: string,
-        readonly length: number,
-    ) {
-        super(`"field" tem o tamanho mínimo de ${length} caracteres`);
+    constructor(readonly minLength: number) {
+        super(`O tamanho mínimo é ${minLength} caracteres!`);
     }
 }

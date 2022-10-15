@@ -1,12 +1,10 @@
-import { MinLengthError } from './RequiredError';
+import { RequiredError } from './RequiredError';
 
 type paramsType = {
-    readonly field: string;
-    readonly value: { length: number };
-    readonly length: number;
+    readonly value: string | number | undefined | null;
 }
 
-export function required({ field, value, length }: paramsType) {
-    if (value.length < length)
-        throw new MinLengthError(field, length);
+export function required({ value }: paramsType) {
+    if (!value)
+        throw new RequiredError();
 }

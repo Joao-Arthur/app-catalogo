@@ -1,37 +1,44 @@
-import { minLength } from './required';
-import { MinLengthError } from './RequiredError';
+import { required } from './required';
+import { RequiredError } from './RequiredError';
 
-describe('minLength', () => {
-    it('should throw when length not achieved', () => {
+describe('required', () => {
+    it('should throw when value is not passed', () => {
         expect(
-            () => minLength({ field: 'user', value: 'abcdefg', length: 10 }),
-        ).toThrowError(MinLengthError);
+            () => required({ value: undefined }),
+        ).toThrowError(RequiredError);
         expect(
-            () => minLength({ field: 'user', value: '', length: 10 }),
-        ).toThrowError(MinLengthError);
+            () => required({ value: null }),
+        ).toThrowError(RequiredError);
         expect(
-            () => minLength({ field: 'user', value: [5, 23, 0], length: 10 }),
-        ).toThrowError(MinLengthError);
+            () => required({ value: '' }),
+        ).toThrowError(RequiredError);
         expect(
-            () => minLength({ field: 'user', value: [], length: 10 }),
-        ).toThrowError(MinLengthError);
-        expect(
-            () => minLength({ field: 'user', value: { length: 7 }, length: 10 }),
-        ).toThrowError(MinLengthError);
-        expect(
-            () => minLength({ field: 'user', value: { length: 0 }, length: 10 }),
-        ).toThrowError(MinLengthError);
+            () => required({ value: 0 }),
+        ).toThrowError(RequiredError);
     });
 
-    it('should not throw when length achieved', () => {
+    it('should not throw when value is passed', () => {
         expect(
-            () => minLength({ field: 'user', value: 'abcdefghij', length: 10 }),
-        ).not.toThrowError(MinLengthError);
+            () => required({ value: 'abcdefghij' }),
+        ).not.toThrowError(RequiredError);
         expect(
-            () => minLength({ field: 'user', value: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9], length: 10 }),
-        ).not.toThrowError(MinLengthError);
+            () => required({ value: 1 }),
+        ).not.toThrowError(RequiredError);
         expect(
-            () => minLength({ field: 'user', value: { length: 10 }, length: 10 }),
-        ).not.toThrowError(MinLengthError);
+            () => required({ value: -1 }),
+        ).not.toThrowError(RequiredError);
+        expect(
+            () => required({ value: 20 }),
+        ).not.toThrowError(RequiredError);
+        expect(
+            () => required({ value: -48 }),
+        ).not.toThrowError(RequiredError);
+        expect(
+            () => required({ value: '0' }),
+        ).not.toThrowError(RequiredError);
+        expect(
+            () => required({ value: 'Lorem ipsum dolor sit amet' }),
+        ).not.toThrowError(RequiredError);
+
     });
 });

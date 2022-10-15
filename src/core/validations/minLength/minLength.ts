@@ -1,12 +1,13 @@
 import { MinLengthError } from './MinLengthError';
 
 type paramsType = {
-    readonly field: string;
-    readonly value: { length: number };
-    readonly length: number;
+    readonly value: {
+        readonly length: number
+    };
+    readonly minLength: number;
 }
 
-export function minLength({ field, value, length }: paramsType) {
-    if (value.length < length)
-        throw new MinLengthError(field, length);
+export function minLength({ value, minLength }: paramsType) {
+    if (value.length < minLength)
+        throw new MinLengthError(minLength);
 }

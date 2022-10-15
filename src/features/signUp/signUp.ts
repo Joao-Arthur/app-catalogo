@@ -4,10 +4,25 @@ type paramsType = {
 }
 
 export async function signUp({ email, password }: paramsType) {
-    if (!email)
-        throw new Error('informe o email');
-    if (!password)
-        throw new Error('informe a senha');
-    if (email !== 'teste' || password !== '123')
-        throw new Error('email ou senha incorretos');
+    validator.validate([
+        {
+            name: 'e-mail',
+            value: email,
+            validations: [
+                required,
+                minLength(3),
+                emailFormat,
+            ],
+        },
+        {
+            name: 'senha',
+            value: password,
+            validations: [
+                required,
+                minLength(8),
+                containsNumber,
+                containsSpecialChar,
+            ],
+        },
+    ]);
 }
