@@ -2,15 +2,10 @@ import { useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { Button, Card, Paragraph } from 'react-native-paper';
 import { formatCurrency } from '../../core/currency/formatCurrency';
+import { itemType } from '../../features/item/item';
 
 type props = {
-    item: {
-        id: string;
-        name: string;
-        description: string;
-        price: number;
-        stock: number;
-    };
+    item: itemType;
 }
 
 export function CatalogItem({ item: { name, description, price, stock } }: props) {
