@@ -91,7 +91,6 @@ export function SignIn() {
                 Entrar
             </Button>
             <Button
-                disabled={!!errors.email || !!errors.password}
                 mode='contained'
                 labelStyle={{ fontSize: 20 }}
                 contentStyle={{ height: 70 }}
