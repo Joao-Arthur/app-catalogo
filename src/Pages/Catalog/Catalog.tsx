@@ -6,7 +6,6 @@ import { Header } from './Header';
 export function Catalog() {
     return (
         <>
-            <Header />
             <View style={styles.container}>
                 <CatalogItems />
                 <Footer />
