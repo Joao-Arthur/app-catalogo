@@ -29,6 +29,6 @@ export async function signIn({ email, password }: paramsType) {
     if (passwordValidation.errors.length)
         return;
 
-    if (email !== 'teste' || password !== '123')
+    if (email !== 'teste@gmail.com' || password !== '12345678')
         throw new Error('Email ou senha incorretos!');
 }
