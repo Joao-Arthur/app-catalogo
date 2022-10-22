@@ -14,8 +14,8 @@ export function MainLayout() {
             <Screen options={{ headerShown: false }} name="SignIn" component={SignIn} />
             <Screen options={{ headerShown: false }} name="SignUp" component={SignUp} />
             <Screen options={{ title: 'Catálogo' }} name="Catalog" component={Catalog} />
-            <Screen name="ItemRegister" component={ItemRegister} />
-            <Screen name="Cart" component={Cart} />
+            <Screen options={{ title: 'Adicionar produto' }} name="ItemRegister" component={ItemRegister} />
+            <Screen options={{ title: 'Carrinho' }} name="Cart" component={Cart} />
         </Navigator>
     );
 }

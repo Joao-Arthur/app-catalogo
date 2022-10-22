@@ -2,8 +2,8 @@ import { Controller, useForm } from 'react-hook-form';
 import { StyleSheet, View } from 'react-native';
 import { Button, Text, TextInput } from 'react-native-paper';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
-//import { signIn } from '../../features/signIn';
 import { useNavigation } from '@react-navigation/native';
+import { signUp } from '../../features/signUp';
 
 type paramsType = {
     email: string;
@@ -11,7 +11,6 @@ type paramsType = {
 };
 
 type RootStackParamList = {
-    SignUp: undefined;
     SignIn: undefined;
     Catalog: undefined;
 };
@@ -27,12 +26,12 @@ export function SignUp() {
     });
 
     function onSubmit(data: paramsType) {
-        //  signIn(data).then(()=> {
-        //      navigation.replace('Catalog');
-        //      console.log('cadastro concluido');
-        //  }).catch(() => {
-        //      console.log('erro');
-        //  });
+        signUp(data).then(() => {
+            navigation.replace('Catalog');
+        }).catch(error => {
+            if (error instanceof Error)
+                console.error(error.message);
+        });
     }//
 
     function onSignInClick() {
