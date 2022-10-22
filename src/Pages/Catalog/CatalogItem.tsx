@@ -3,29 +3,37 @@ import { StyleSheet, View } from 'react-native';
 import { Button, Card, Paragraph } from 'react-native-paper';
 import { formatCurrency } from '../../core/currency/formatCurrency';
 import { itemType } from '../../features/item/item';
+import { useCatalogStore } from '../../integrations/catalogStore';
 
 type props = {
     item: itemType;
 }
 
-export function CatalogItem({ item: { name, description, price, stock } }: props) {
-    const [amount, setNumberOfItems] = useState(0);
-    const isOnCart = false;
+export function CatalogItem({ item: { id, name, description, price, stock } }: props) {
+    const cart = useCatalogStore(state => state.cart);
+    const addToCart = useCatalogStore(state => state.addToCart);
+    const removeFromCart = useCatalogStore(state => state.removeFromCart);
+    const [amount, setAmount] = useState(0);
 
     function increaseAmount() {
         if (amount + 1 > stock)
             return;
-        setNumberOfItems(amount + 1);
+        setAmount(amount + 1);
     }
 
     function decreaseAmount() {
         if (amount - 1 < 0)
             return;
-        setNumberOfItems(amount - 1);
+        setAmount(amount - 1);
     }
 
     function handleAddToCart() {
+        addToCart(id);
+    }
 
+    function handleRemoveFromCart() {
+        removeFromCart(id);
+        setAmount(0);
     }
 
     return (
@@ -39,21 +47,35 @@ export function CatalogItem({ item: { name, description, price, stock } }: props
                     <Paragraph>Total: {formatCurrency(amount * price)}</Paragraph>
                 </Card.Content>
                 <Card.Actions>
-                    <Button
-                        mode='outlined'
-                        labelStyle={{ fontSize: 25 }}
-                        disabled={amount === stock}
-                        onPress={increaseAmount}>+</Button>
-                    <Button
-                        mode='outlined'
-                        labelStyle={{ fontSize: 25 }}
-                        disabled={amount === 0}
-                        onPress={decreaseAmount}>-</Button>
-                    <Button
-                        mode='contained'
-                        disabled={isOnCart || amount === 0}
-                        onPress={handleAddToCart}
-                    >Adicionar</Button>
+                    {
+                        cart.includes(id)
+                            ? (
+                                <>
+                                    <Button
+                                        mode='contained'
+                                        onPress={handleRemoveFromCart}
+                                    >Remover do carrinho</Button>
+                                </>
+                            ) : (
+                                <>
+                                    <Button
+                                        mode='outlined'
+                                        labelStyle={{ fontSize: 25 }}
+                                        disabled={amount === stock}
+                                        onPress={increaseAmount}>+</Button>
+                                    <Button
+                                        mode='outlined'
+                                        labelStyle={{ fontSize: 25 }}
+                                        disabled={amount === 0}
+                                        onPress={decreaseAmount}>-</Button>
+                                    <Button
+                                        mode='contained'
+                                        disabled={amount === 0}
+                                        onPress={handleAddToCart}
+                                    >Adicionar</Button>
+                                </>
+                            )
+                    }
                 </Card.Actions>
             </Card>
         </View>
