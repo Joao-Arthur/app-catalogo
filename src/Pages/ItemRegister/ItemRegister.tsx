@@ -44,7 +44,6 @@ export function ItemRegister() {
 
     return (
         <View style={styles.container}>
-            <Text variant='displayMedium'>Adicionar Produto</Text>
             <View style={styles.inputContainer}>
                 <Controller
                     control={control}
@@ -112,8 +111,8 @@ export function ItemRegister() {
                 mode="contained"
                 onPress={handleSubmit(onSubmit)}
                 labelStyle={{ fontSize: 20 }}
-                contentStyle={{ height: 70 }}
-                style={{ marginTop: 5, marginBottom: 5 }}
+                contentStyle={{ height: 60 }}
+                style={{ marginTop: 5, marginBottom: 5, width: '80%' }}
             >
                 Adicionar produto
             </Button>

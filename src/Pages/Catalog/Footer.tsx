@@ -26,7 +26,7 @@ export function Footer() {
                 mode="contained"
                 onPress={handleAddItem}
                 labelStyle={{ fontSize: 20 }}
-                contentStyle={{ height: 70 }}
+                contentStyle={{ height: 60 }}
                 style={{ marginTop: 5, marginBottom: 5 }}
             >
                 Adicionar produto
@@ -36,7 +36,7 @@ export function Footer() {
                 mode="contained"
                 onPress={handleGoToCart}
                 labelStyle={{ fontSize: 20 }}
-                contentStyle={{ height: 70 }}
+                contentStyle={{ height: 60 }}
                 style={{ marginBottom: 5 }}
             >
                 Carrinho

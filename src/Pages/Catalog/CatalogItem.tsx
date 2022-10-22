@@ -48,31 +48,39 @@ export function CatalogItem({ item: { id, name, description, price, stock } }: p
                 </Card.Content>
                 <Card.Actions>
                     {
-                        cart.findIndex(item => item.id === id) > -1
+                        cart.findIndex(cartItem => cartItem.id === id) > -1
                             ? (
-                                <>
-                                    <Button
-                                        mode='contained'
-                                        onPress={handleRemoveFromCart}
-                                    >Remover do carrinho</Button>
-                                </>
+                                <Button
+                                    mode='contained'
+                                    onPress={handleRemoveFromCart}
+                                >
+                                    Remover do carrinho
+                                </Button>
                             ) : (
                                 <>
                                     <Button
                                         mode='outlined'
-                                        labelStyle={{ fontSize: 25 }}
+                                        style={{ marginRight: 5 }}
                                         disabled={amount === stock}
-                                        onPress={increaseAmount}>+</Button>
+                                        onPress={increaseAmount}
+                                    >
+                                        +
+                                    </Button>
                                     <Button
                                         mode='outlined'
-                                        labelStyle={{ fontSize: 25 }}
+                                        style={{ marginRight: 5 }}
                                         disabled={amount === 0}
-                                        onPress={decreaseAmount}>-</Button>
+                                        onPress={decreaseAmount}
+                                    >
+                                        -
+                                    </Button>
                                     <Button
                                         mode='contained'
                                         disabled={amount === 0}
                                         onPress={handleAddToCart}
-                                    >Adicionar</Button>
+                                    >
+                                        Adicionar ao carrinho
+                                    </Button>
                                 </>
                             )
                     }
