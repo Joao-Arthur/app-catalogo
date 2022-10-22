@@ -28,7 +28,7 @@ export function CatalogItem({ item: { id, name, description, price, stock } }: p
     }
 
     function handleAddToCart() {
-        addToCart(id);
+        addToCart({ id, amount });
     }
 
     function handleRemoveFromCart() {
@@ -48,7 +48,7 @@ export function CatalogItem({ item: { id, name, description, price, stock } }: p
                 </Card.Content>
                 <Card.Actions>
                     {
-                        cart.includes(id)
+                        cart.findIndex(item => item.id === id) > -1
                             ? (
                                 <>
                                     <Button

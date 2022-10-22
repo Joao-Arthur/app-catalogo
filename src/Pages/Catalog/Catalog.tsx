@@ -5,12 +5,10 @@ import { Header } from './Header';
 
 export function Catalog() {
     return (
-        <>
-            <View style={styles.container}>
-                <CatalogItems />
-                <Footer />
-            </View>
-        </>
+        <View style={styles.container}>
+            <CatalogItems />
+            <Footer />
+        </View>
     );
 }
 

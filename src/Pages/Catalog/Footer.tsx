@@ -27,7 +27,7 @@ export function Footer() {
                 onPress={handleAddItem}
                 labelStyle={{ fontSize: 20 }}
                 contentStyle={{ height: 70 }}
-                style={{ marginBottom: 5 }}
+                style={{ marginTop: 5, marginBottom: 5 }}
             >
                 Adicionar produto
             </Button>
@@ -36,9 +36,10 @@ export function Footer() {
                 mode="contained"
                 onPress={handleGoToCart}
                 labelStyle={{ fontSize: 20 }}
-                contentStyle={{ height: 70 }} style={{ marginBottom: 5 }}
+                contentStyle={{ height: 70 }}
+                style={{ marginBottom: 5 }}
             >
-                Finalizar compra
+                Carrinho
             </Button>
         </View>
     );
@@ -47,6 +48,7 @@ export function Footer() {
 const styles = StyleSheet.create({
     container: {
         flex: 0,
+        width: '80%',
         minHeight: 100,
         justifyContent: 'center',
     },
