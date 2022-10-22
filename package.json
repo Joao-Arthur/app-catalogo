@@ -4,9 +4,6 @@
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
     "dev": "expo start",
-    "dev:android": "expo start --android",
-    "dev:ios": "expo start --ios",
-    "dev:web": "expo start --web",
     "test": "jest",
     "lint": "eslint \"./src/**/*.{ts,tsx}\" --fix"
   },
@@ -26,7 +23,6 @@
     "react-native-paper": "^5.0.0-rc.5",
     "react-native-safe-area-context": "4.3.1",
     "react-native-screens": "~3.15.0",
-    "react-native-web": "~0.18.7",
     "zustand": "^4.1.2"
   },
   "devDependencies": {
