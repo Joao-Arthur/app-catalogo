@@ -32,7 +32,7 @@ export function SignUp() {
             if (error instanceof Error)
                 console.error(error.message);
         });
-    }//
+    }
 
     function onSignInClick() {
         navigation.replace('SignIn');
@@ -44,10 +44,7 @@ export function SignUp() {
             <View style={styles.inputContainer}>
                 <Controller
                     control={control}
-                    rules={{
-                        required: true,
-                        maxLength: 100,
-                    }}
+                    rules={{ required: true, maxLength: 100 }}
                     render={({ field: { onChange, onBlur, value } }) => (
                         <TextInput
                             label='e-mail'
@@ -62,10 +59,7 @@ export function SignUp() {
                 />
                 <Controller
                     control={control}
-                    rules={{
-                        required: true,
-                        maxLength: 100,
-                    }}
+                    rules={{ required: true, maxLength: 100 }}
                     render={({ field: { onChange, onBlur, value } }) => (
                         <TextInput
                             label='senha'

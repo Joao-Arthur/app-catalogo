@@ -44,10 +44,7 @@ export function SignIn() {
             <View style={styles.inputContainer}>
                 <Controller
                     control={control}
-                    rules={{
-                        required: true,
-                        maxLength: 100,
-                    }}
+                    rules={{ required: true, maxLength: 100 }}
                     render={({ field: { onChange, onBlur, value } }) => (
                         <TextInput
                             label='e-mail'
@@ -62,10 +59,7 @@ export function SignIn() {
                 />
                 <Controller
                     control={control}
-                    rules={{
-                        required: true,
-                        maxLength: 100,
-                    }}
+                    rules={{ required: true, maxLength: 100 }}
                     render={({ field: { onChange, onBlur, value } }) => (
                         <TextInput
                             label='senha'
