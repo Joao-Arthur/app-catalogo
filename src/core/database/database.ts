@@ -32,7 +32,7 @@ export function query<T>(command: string, params?: (string | number)[]): Promise
                 command,
                 params,
                 (_, result) => {
-                    resolve(result as T);
+                    resolve(result.rows._array as unknown as T);
                 },
                 () => {
                     reject();

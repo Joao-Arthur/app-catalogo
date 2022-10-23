@@ -2,10 +2,11 @@ import 'react-native-get-random-values';
 import { nanoid } from 'nanoid';
 import { Controller, useForm } from 'react-hook-form';
 import { StyleSheet, View } from 'react-native';
-import { Button, Text, TextInput } from 'react-native-paper';
+import { Button, TextInput } from 'react-native-paper';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { useNavigation } from '@react-navigation/native';
 import { useCatalogStore } from '../../integrations/catalogStore';
+import { addItem as addItemToDatabase } from '../../core/database/itemTable';
 
 type paramsType = {
     name: string;
@@ -20,7 +21,7 @@ type RootStackParamList = {
 
 export function ItemRegister() {
     const navigation = useNavigation<NativeStackScreenProps<RootStackParamList>['navigation']>();
-    const addItem = useCatalogStore(state => state.addItem);
+    const addItemToStore = useCatalogStore(state => state.addItem);
     const { control, handleSubmit, formState: { errors } } = useForm({
         defaultValues: {
             name: '',
@@ -31,14 +32,15 @@ export function ItemRegister() {
     });
 
     function onSubmit(data: paramsType) {
-        addItem({
+        const item = {
             id: nanoid(),
             name: data.name,
             description: data.description,
             price: Number(data.price),
             stock: Number(data.stock),
-        });
-
+        }
+        addItemToStore(item);
+        addItemToDatabase(item);
         navigation.navigate('Catalog');
     }
 
