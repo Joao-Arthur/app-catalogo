@@ -22,7 +22,7 @@ type RootStackParamList = {
 export function ItemRegister() {
     const navigation = useNavigation<NativeStackScreenProps<RootStackParamList>['navigation']>();
     const addItemToStore = useCatalogStore(state => state.addItem);
-    const { control, handleSubmit, formState: { errors } } = useForm({
+    const { control, handleSubmit } = useForm({
         defaultValues: {
             name: '',
             description: '',

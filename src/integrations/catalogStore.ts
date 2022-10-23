@@ -21,5 +21,5 @@ export const useCatalogStore = create<state>(set => ({
     cart: [],
     addToCart: cartItem => set(({ cart }) => ({ cart: cart.concat(cartItem) })),
     removeFromCart: id => set(({ cart }) => ({ cart: cart.filter(cartItem => cartItem.id !== id) })),
-    clearCart: () => set(({ cart }) => ({ cart: [] })),
+    clearCart: () => set(() => ({ cart: [] })),
 }));

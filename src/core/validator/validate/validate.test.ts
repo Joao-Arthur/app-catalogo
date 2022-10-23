@@ -9,9 +9,9 @@ describe('validate', () => {
         expect(validate({
             value: 'Thiago',
             validations: [
-                ({ value }) => { throw new FirstError('Lorem Ipsum'); },
-                ({ value }) => { },
-                ({ value }) => { throw new SecondError('Dolor Sit Amet'); },
+                () => { throw new FirstError('Lorem Ipsum'); },
+                () => { },
+                () => { throw new SecondError('Dolor Sit Amet'); },
             ],
         })).toEqual({
             errors: [
