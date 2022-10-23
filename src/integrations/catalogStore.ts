@@ -10,6 +10,7 @@ type state = {
     readonly cart: cartType[];
     readonly addToCart: (cartItem: cartType) => void;
     readonly removeFromCart: (id: itemType['id']) => void;
+    readonly clearCart: () => void;
 };
 
 export const useCatalogStore = create<state>(set => ({
@@ -20,4 +21,5 @@ export const useCatalogStore = create<state>(set => ({
     cart: [],
     addToCart: cartItem => set(({ cart }) => ({ cart: cart.concat(cartItem) })),
     removeFromCart: id => set(({ cart }) => ({ cart: cart.filter(cartItem => cartItem.id !== id) })),
+    clearCart: () => set(({ cart }) => ({ cart: [] })),
 }));

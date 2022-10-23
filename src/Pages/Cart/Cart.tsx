@@ -1,18 +1,28 @@
-import { ScrollView, StyleSheet, View } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { ToastAndroid, ScrollView, StyleSheet, View } from 'react-native';
 import { Button, Card, Paragraph } from 'react-native-paper';
 import { formatCurrency } from '../../core/currency/formatCurrency';
 import { useCatalogStore } from '../../integrations/catalogStore';
 
+type RootStackParamList = {
+    Catalog: undefined;
+};
+
 export function Cart() {
+    const navigation = useNavigation<NativeStackScreenProps<RootStackParamList>['navigation']>();
     const items = useCatalogStore(state => state.items);
     const cart = useCatalogStore(state => state.cart);
+    const clearCart = useCatalogStore(state => state.clearCart);
 
     function getItemById(id: typeof items[number]['id']) {
         return items.find(item => item.id === id)!;
     }
 
     function handleFinish() {
-        // TODO
+        clearCart();
+        navigation.replace('Catalog');
+        ToastAndroid.showWithGravityAndOffset('Compra finalizada!!!', ToastAndroid.LONG, ToastAndroid.BOTTOM, 25, 50);
     }
 
     return (
