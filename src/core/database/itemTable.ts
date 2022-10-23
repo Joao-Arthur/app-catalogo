@@ -1,5 +1,5 @@
-import { itemType } from "../../features/item/item";
-import { execute, query } from "./database";
+import { itemType } from '../../features/item/item';
+import { execute, query } from './database';
 
 type itemTableType = {
     readonly id: string;
@@ -17,7 +17,7 @@ export function createItemTable() {
             description TEXT NOT NULL,
             price TEXT NOT NULL,
             stock TEXT NOT NULL
-        );`
+        );`,
     );
 }
 

@@ -11,7 +11,7 @@ export function Catalog() {
     useEffect(() => {
         async function loadItems() {
             const items = await getItems();
-            if (!!items.length)
+            if (items.length)
                 setItems(items);
         }
         loadItems();

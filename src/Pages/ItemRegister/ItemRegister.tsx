@@ -38,7 +38,7 @@ export function ItemRegister() {
             description: data.description,
             price: Number(data.price),
             stock: Number(data.stock),
-        }
+        };
         addItemToStore(item);
         addItemToDatabase(item);
         navigation.navigate('Catalog');
