@@ -4,13 +4,18 @@ import { SignUp } from './Pages/SignUp';
 import { ItemRegister } from './Pages/ItemRegister';
 import { Cart } from './Pages/Cart';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { setupDatabase } from './core/database/database';
+import { createItemTable } from './core/database/itemTable';
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
 const { Navigator, Screen } = createNativeStackNavigator();
 
+setupDatabase();
+createItemTable();
+
 export function MainLayout() {
     return (
-        <Navigator initialRouteName="SignIn">
+        <Navigator initialRouteName="Catalog">
             <Screen options={{ headerShown: false }} name="SignIn" component={SignIn} />
             <Screen options={{ headerShown: false }} name="SignUp" component={SignUp} />
             <Screen options={{ title: 'Catálogo' }} name="Catalog" component={Catalog} />
