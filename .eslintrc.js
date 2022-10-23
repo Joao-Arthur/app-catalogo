@@ -70,7 +70,7 @@ module.exports = {
                 minProperties: 0,
             },
         }],
-        'linebreak-style': ['error', 'windows'],
+        'linebreak-style': ['error', 'unix'],
         quotes: ['error', 'single'],
         semi: ['error', 'always'],
         'eol-last': ['error', 'always'],
